@@ -4,7 +4,12 @@ module.exports = function( config )
 	{
 		let palettes = collection
 			.getFilteredByGlob( "src/palettes/*.md" )
-			.filter( palette => !palette.data.disabled );
+			.filter( palette => !palette.data.disabled )
+			.map( palette =>
+			{
+				palette.data.author = palette.data.author || "Anonymous";
+				palette.data.title = palette.data.title || "Untitled";
+			});
 
 		return palettes;
 	});
