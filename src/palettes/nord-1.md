@@ -6,4 +6,5 @@ colors:
   - 5e81ac
   - eceff4
   - ebcb8b
+source: https://www.nordtheme.com
 ---
