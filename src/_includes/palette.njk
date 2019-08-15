@@ -1,0 +1,10 @@
+<div class="palette">
+	<h2>{{ title }}</h2>
+	<h3>by {{ author }}</h3>
+
+	<ul>
+		{%- for color in colors -%}
+		<li style="display: block; height: 24px; width: 24px; background-color: {{ color }}"></li>
+		{%- endfor -%}
+	</ul>
+</div>
