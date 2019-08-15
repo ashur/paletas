@@ -9,6 +9,8 @@ module.exports = function( config )
 			{
 				palette.data.author = palette.data.author || "Anonymous";
 				palette.data.title = palette.data.title || "Untitled";
+
+				return palette;
 			});
 
 		return palettes;
