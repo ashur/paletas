@@ -10,7 +10,7 @@ The palettes behind [@tinyskylines](https://botsin.space/@tinyskylines).
 1. Create a new file in `src/palettes` using the format described below
 1. Once you're done, open a new [Pull Request][pr] and I'll get it merged 💫
 
-> 🙋‍♀️ If you're not familiar with forking, pull requests, or if you have any other questions, that's okay! Give me a shout on [Mastodon][m] or [Twitter][t], and I'd be happy to help!
+> 🙋‍♀️ If you're not familiar with forking, pull requests, or if you have any other questions, give me a shout on [Mastodon][m] or [Twitter][t]. I'd be happy to help!
 
 ### Palette Files
 
