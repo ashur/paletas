@@ -1,6 +1,6 @@
 # Paletas
 
-The palettes behind <a rel="me" href="https://botsin.space/@tinyskylines">@tinyskylines</a>.
+The palettes behind [@tinyskylines](https://botsin.space/@tinyskylines).
 
 ## Contributing
 
