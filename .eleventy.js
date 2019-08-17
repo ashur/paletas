@@ -7,8 +7,30 @@ module.exports = function( config )
 			.filter( palette => !palette.data.disabled )
 			.map( palette =>
 			{
+				/* Default values */
 				palette.data.author = palette.data.author || "Anonymous";
 				palette.data.title = palette.data.title || "Untitled";
+
+				/* Validate `colors` */
+				if( Array.isArray( palette.data.colors ) )
+				{
+					if( palette.data.colors.length < 3 )
+					{
+						throw new Error( `At least 3 colors are required (${palette.inputPath})` );
+					}
+
+					palette.data.colors.forEach( color =>
+					{
+						if( color.toString().length !== 6 )
+						{
+							throw new Error( `Invalid color value: ${color} (${palette.inputPath})` );
+						}
+					});
+				}
+				else
+				{
+					throw new Error( `Missing or unexpected 'colors' value (${palette.inputPath})` );
+				}
 
 				return palette;
 			});

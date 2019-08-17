@@ -21,10 +21,10 @@ A palette is a single Markdown file with a few bits of [frontmatter][fm]:
 title: Casual Diploma
 author: Beatriz M.
 colors:
-  - 001b44
-  - d5008f
-  - ffa3d7
-  - fbf1a9
+  - "001b44"
+  - "d5008f"
+  - "ffa3d7"
+  - "fbf1a9"
 source: https://tachyons.io/docs/themes/skins
 ---
 ```
