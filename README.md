@@ -1,6 +1,6 @@
 # Paletas
 
-The palettes behind [@tinyskylines](https://botsin.space/@tinyskylines).
+Palettes for [@tinyskylines](https://botsin.space/@tinyskylines).
 
 ## Contributing
 
