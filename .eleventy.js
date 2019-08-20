@@ -1,5 +1,5 @@
-const fetch = require( 'node-fetch' );
-const Paletas = require( './src/scripts/palette' );
+const fetch = require( "node-fetch" );
+const Paletas = require( "./src/scripts/palette" );
 
 module.exports = function( config )
 {
@@ -12,7 +12,7 @@ module.exports = function( config )
 		let url = process.env.HISTORY_URL;
 		if( !url )
 		{
-			console.log( '👻 Skipping /api/history.json' );
+			console.log( "👻 Skipping /api/history.json" );
 			return [];
 		}
 
@@ -36,7 +36,7 @@ module.exports = function( config )
 		let availableItems = allItems
 			.filter( collectionItem =>
 			{
-				return !Paletas.historyContains( history, collectionItem )
+				return !Paletas.historyContains( history, collectionItem );
 			});
 
 		let maxLength = Math.floor( allItems.length / 2 );
@@ -94,23 +94,23 @@ module.exports = function( config )
 	 * Filters
 	 */
 
-	config.addFilter( 'api', collection =>
+	config.addFilter( "api", collection =>
 	{
 		return collection.map( item => Paletas.api( item ) );
 	});
 
-	config.addFilter( 'jsonify', items =>
+	config.addFilter( "jsonify", items =>
 	{
 		return JSON.stringify( items, null, 2 );
 	});
 
-	config.addFilter( 'textify', collection =>
+	config.addFilter( "textify", collection =>
 	{
-		let text = '';
+		let text = "";
 
 		collection.forEach( item =>
 		{
-			text += `# ${item.data.title}\n# Submitted by ${item.data.author}\n${item.data.colors.join( ',' )}\n\n`
+			text += `# ${item.data.title}\n# Submitted by ${item.data.author}\n${item.data.colors.join( "," )}\n\n`;
 		});
 
 		return text.trim();

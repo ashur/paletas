@@ -20,7 +20,7 @@ module.exports.historyContains = (jsonHistory, collectionItem) =>
 {
 	let match = jsonHistory.find( element =>
 	{
-		return element.slug === collectionItem.data.page.fileSlug
+		return element.slug === collectionItem.data.page.fileSlug;
 	});
 
 	return match !== undefined;
