@@ -1,5 +1,57 @@
+const fetch = require( 'node-fetch' );
+const Paletas = require( './src/scripts/palette' );
+
 module.exports = function( config )
 {
+	/*
+	 * Collections
+	 */
+
+	config.addCollection( "history", async (collection) =>
+	{
+		let url = process.env.HISTORY_URL;
+		if( !url )
+		{
+			console.log( '👻 Skipping /api/history.json' );
+			return [];
+		}
+
+		let history = [];
+		let res = await fetch( url );
+
+		try
+		{
+			history = await res.json();
+		}
+		catch( error )
+		{
+			// We expect invalid JSON in the absence of a valid URL (ex., this
+			// is the first history item)
+		}
+
+		let allItems = collection
+			.getFilteredByGlob( "src/palettes/*.md" )
+			.filter( palette => !palette.data.disabled );
+
+		let availableItems = allItems
+			.filter( collectionItem =>
+			{
+				return !Paletas.historyContains( history, collectionItem )
+			});
+
+		let maxLength = Math.floor( allItems.length / 2 );
+		if( history.length >= maxLength )
+		{
+			history.pop();
+		}
+
+		let randomIndex = Math.floor( Math.random() * availableItems.length );
+		let randomItem = availableItems[randomIndex];	
+		history.unshift( Paletas.api( randomItem ) );
+
+		return history;
+	});
+
 	config.addCollection( "palettes", collection =>
 	{
 		let palettes = collection
@@ -38,18 +90,17 @@ module.exports = function( config )
 		return palettes;
 	});
 
-	config.addFilter( 'jsonify', collection =>
-	{
-		let items = collection.map( item =>
-		{
-			return {
-				title: item.data.title,
-				author: item.data.author,
-				colors: item.data.colors.map( color => color.toString() ),
-				date: item.data.date,
-			};
-		});
+	/*
+	 * Filters
+	 */
 
+	config.addFilter( 'api', collection =>
+	{
+		return collection.map( item => Paletas.api( item ) );
+	});
+
+	config.addFilter( 'jsonify', items =>
+	{
 		return JSON.stringify( items, null, 2 );
 	});
 
