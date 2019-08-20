@@ -39,15 +39,15 @@ module.exports = function( config )
 				return !Paletas.historyContains( history, collectionItem );
 			});
 
+		let randomIndex = Math.floor( Math.random() * availableItems.length );
+		let randomItem = availableItems[randomIndex];
+		history.unshift( Paletas.api( randomItem ) );
+
 		let maxLength = Math.floor( allItems.length / 2 );
 		if( history.length >= maxLength )
 		{
-			history.pop();
+			history = history.slice( 0, maxLength );
 		}
-
-		let randomIndex = Math.floor( Math.random() * availableItems.length );
-		let randomItem = availableItems[randomIndex];	
-		history.unshift( Paletas.api( randomItem ) );
 
 		return history;
 	});
