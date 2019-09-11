@@ -43,7 +43,7 @@ module.exports = function( config )
 		let randomItem = availableItems[randomIndex];
 		history.unshift( Paletas.api( randomItem ) );
 
-		let maxLength = Math.floor( allItems.length / 2 );
+		let maxLength = Math.floor( allItems.length * 0.75 );
 		if( history.length >= maxLength )
 		{
 			history = history.slice( 0, maxLength );
